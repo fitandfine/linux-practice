@@ -40,5 +40,14 @@ level 7 morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 level 8 command ==> grep -n "millionth" data.txt
 level 8 dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
+level 9 command ==> sort data.txt | uniq -u
+level 9 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+level 10 command ==> strings data.txt | grep '==='
+level 10 FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+level 11 command ==> cat data.txt | base64 -d
+level 11 dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
 
 
