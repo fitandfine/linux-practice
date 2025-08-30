@@ -1,0 +1,44 @@
+For absolute beginners:
+I recommend going through https://linuxjourney.com/ 
+before exploring this website. https://overthewire.org/wargames/bandit/
+
+These are the passwords as I have figured out in the process of climbing Bandit levels.
+Instead of just making a text file of passwords, I want to make note of hints for
+commands as well for not so obvious solutions ( from my current state )
+
+Tech jobs are harder to land than ever for beginners, but you've gotta start somewhere.
+It's never too late to learn. Don't try to learn everything in a day. 
+Better days are always ahead, keep pushing.
+
+level 0 password means the password required for ssh login to enter level0 i.e bandit0.
+level 1 password means the password required for ssh login of user bandit1 and so on.
+
+Excuse me for poor formatting, I am using nano text editor of ubuntu. I want to stick 
+to terminal as much as I can to make learning my muscle memory. 
+ 
+Remember to specify port 2220 ( or as mentioned in the website)
+ or else it will use port 22 which is not desirable in this case. 
+Open your terminal and get started.
+ $: ssh bandit0@bandit.labs.overthewire.org -p 2220
+ ( notice that -p 2220 part for specifying ssh connection on port 2220)
+
+
+	Password/command hints
+level 0 bandit0
+level 1 ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+level 2 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+level 3 MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+level 4 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+level 5 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+level 6 command ==> find . -type f -size 1033c ! -executable
+level 6 HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+level 7 command ==> find / -user bandit7 -group bandit6 -size 33c
+level 7 morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+level 8 command ==> grep -n "millionth" data.txt
+level 8 dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+
+
