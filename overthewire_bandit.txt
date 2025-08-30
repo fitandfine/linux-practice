@@ -1,4 +1,4 @@
-This is for absolute beginners:
+-----This is for absolute beginners:-----
 I recommend going through https://linuxjourney.com/ 
 before exploring this website. https://overthewire.org/wargames/bandit/
 
