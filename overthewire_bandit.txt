@@ -2,7 +2,7 @@ This is for absolute beginners:
 I recommend going through https://linuxjourney.com/ 
 before exploring this website. https://overthewire.org/wargames/bandit/
 
-(For pros: BE MY MENTOR!)
+(For pros: PLEASE!!! BE MY MENTOR!)
 
 These are the passwords as I have figured out in the process of climbing Bandit levels.
 Instead of just making a text file of passwords, I want to make note of hints for
