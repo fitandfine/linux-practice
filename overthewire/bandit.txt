@@ -1,22 +1,12 @@
------This is for absolute beginners:-----
-I recommend going through https://linuxjourney.com/ 
-before exploring this website. https://overthewire.org/wargames/bandit/
-
-(For pros: PLEASE!!! BE MY MENTOR!)
 
 These are the passwords as I have figured out in the process of climbing Bandit levels.
 Instead of just making a text file of passwords, I want to make note of hints for
 commands as well for not so obvious solutions ( from my current state )
 
-Tech jobs are harder to land than ever for beginners, but you've gotta start somewhere.
-It's never too late to learn. Don't try to learn everything in a day. 
-Better days are always ahead, keep pushing.
 
 level 0 password means the password required for ssh login to enter level0 i.e bandit0.
 level 1 password means the password required for ssh login of user bandit1 and so on.
 
-Excuse me for poor formatting, I am using nano text editor of ubuntu. I want to stick 
-to terminal as much as I can to make learning my muscle memory. 
  
 Remember to specify port 2220 ( or as mentioned in the website)
  or else it will use port 22 which is not desirable in this case. 
