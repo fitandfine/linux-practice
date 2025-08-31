@@ -1,6 +1,6 @@
 
 
-		User Name		Password
+		User Name		    Password
 level 0 	natas0			natas0
 comamnd ==> curl -u "natas0:natas0" http://natas0.natas.labs.overthewire.org 
 
