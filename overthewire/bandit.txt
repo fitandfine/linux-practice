@@ -51,5 +51,7 @@ level 10 FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 level 11 command ==> cat data.txt | base64 -d
 level 11 dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 
+level 12 command ==> cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+level 12 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
 
-
+level 13 command ==> 
