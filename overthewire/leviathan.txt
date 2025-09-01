@@ -54,3 +54,12 @@ convert these binary values into ASCII equivalent characters:
 
 command ==> python3 -c "print(''.join([chr(int(b, 2)) for b in '00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100'.split()]))"
 
+
+level 6		leviathan6		szo7HDB88w
+Note: 	The vulnerability is simple: the program will open whatever file is at that path, 
+	even if it's not the file it was designed to open.
+	The most elegant and direct solution is to use a symbolic link.  This is a special type of file that points to another file. We can create a symbolic link at /tmp/file.log that points to the leviathan6 password file. 
+	When the leviathan5 executable tries to open /tmp/file.log, it will follow the link and open the password file with its elevated permissions. 
+	Since leviathan5 is owned by leviathan6, it has permission to read the password file.	
+command ==> ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+command ==> ./leviathan5
