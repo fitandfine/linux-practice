@@ -1,0 +1,27 @@
+
+ssh leviathan0@leviathan.labs.overthewire.org -p 2223
+
+
+		Username		Password
+
+level 0		leviathan0		leviathan0
+
+level 1		leviathan1		3QJ3TgzHDq
+command ==> grep -i -n "password" ./.backup/bookmarks.html 
+
+level 2 	leviathan2		NsN1HwFoyN
+Note: Run check program and enter "sex" as password. (Luckily,  I figured it out by cat check command)
+then it elevates your privilege as leviathan2 user. then run following:
+command ==> cat /etc/leviathan_pass/leviathan2
+
+level 3		leviathan3		f0n8h2iWLP
+Note: A race condition exploit  is used to bypass the program's security checks. We create a symbolic link named link that initially points to a harmless decoy file. A background process rapidly and continuously changes what the link points to. In the split second after the program checks the harmless file path but before it opens the file, the background process swaps the symlink to point to the password file.
+		Why It Works and Fails
+			When it works: The printfile program checks the link when it's pointing to the harmless decoy file. The check passes. In the minuscule amount of time it takes to move on to the next step, your while loop switches the link to point to the password file. The program then opens the file (which is now /etc/leviathan_pass/leviathan3) and prints the password to your screen. You won the race.
+
+			When it fails: The printfile program checks the link when it's pointing to the password file (/etc/leviathan_pass/leviathan3). The check fails because the program detects that the path is to a forbidden directory. It then exits with the You cant have that file... error. You lost the race.
+commands ==>
+		$cd /tmp
+		$echo "This is a decoy file." > decoy
+		$ln -s decoy link
+		$(while true; do ln -sf /etc/leviathan_pass/leviathan3 link; ln -sf decoy link; done) & /home/leviathan2/printfile link
