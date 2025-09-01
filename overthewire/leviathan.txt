@@ -1,4 +1,7 @@
 
+
+Data for the levels can be found in the homedirectories. 
+You can look at /etc/leviathan_pass for the various level passwords.
 ssh leviathan0@leviathan.labs.overthewire.org -p 2223
 
 
@@ -25,3 +28,29 @@ commands ==>
 		$echo "This is a decoy file." > decoy
 		$ln -s decoy link
 		$(while true; do ln -sf /etc/leviathan_pass/leviathan3 link; ln -sf decoy link; done) & /home/leviathan2/printfile link
+
+level 4 	leviathan4		WG1egElCvO
+Note:	This level3 program will give access to shell with elevated permission as leviathan4.
+	1) open the program level3 with gdb:
+		$gdb ./level3
+	2) (gdb)info functions
+	3) (gdb)disassemble do_stuff
+	4) Inside the assembly, notice some movl $0x... instructions writing hex values into memory. These are not random numbers, but ASCII characters stored in little-endian order.
+	5) Check each value and converted to text:
+		0x706c6e73 → "snlp"
+		0x746e6972 → "rint"
+		0x000a6674 → "tf\n"
+
+	password for level3 program is "snlprintf"
+
+command ==> cat /etc/leviathan_pass/leviathan4
+
+
+level 5		leviathan5		0dyxT7F4QD
+Note: find the .trash directory and you will find bin program inside it.
+	this is the output of ./bin command from inside ~/.trash directory:
+		00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100 00001010 
+convert these binary values into ASCII equivalent characters:
+
+command ==> python3 -c "print(''.join([chr(int(b, 2)) for b in '00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100'.split()]))"
+
