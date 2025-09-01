@@ -75,3 +75,9 @@ Note: Needs brute-force attack first
 		You didn't need to open the file because you used it as a tool to gain access, not a puzzle to be solved.
 		so no need to worry about leviathan6 program here.
 command ==> cat /etc/leviathan_pass/leviathan7
+
+
+ssh leviathan7@leviathan.labs.overthewire.org -p 2223
+
+leviathan7@leviathan:~$ ls
+CONGRATULATIONS
