@@ -1,0 +1,11 @@
+
+
+Host: krypton.labs.overthewire.org
+Port: 2231
+
+ssh krypton0@krypton.labs.overthewire.org -p 2231
+
+
+level 0					 UzFKWlVGUlBUa2xUUjFKRlFWUT0K
+
+command ==>  echo "S1JZUFRPTklTR1JFQVQ=" | base64
