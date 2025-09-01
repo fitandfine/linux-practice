@@ -14,5 +14,6 @@ Excuse me for poor formatting, I am using nano text editor of ubuntu. I want to 
 to terminal as much as I can to make learning my muscle memory. 
 
 
-
+PLEASE DON'T RUIN YOUR LEARNING REWARDS BY BYPASSING CHALLENGES.
+THIS EXISTS JUST IN CASE YOU HAPPEN TO NOT CREATE BACKUPS OF PREVIOUS LEVELS!
 
