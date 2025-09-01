@@ -63,3 +63,15 @@ Note: 	The vulnerability is simple: the program will open whatever file is at th
 	Since leviathan5 is owned by leviathan6, it has permission to read the password file.	
 command ==> ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
 command ==> ./leviathan5
+
+
+level 7 	leviathan7		qEs5Io5yM8
+Note: Needs brute-force attack first
+	command ==> for i in {0000..9999}; do printf -v code "%04d" $i; ./leviathan6 "$code"; done
+	
+		Then you get an elevated privileged shell with only file as leviathan6 which is executable
+		The executable's SUID bit  allowed it to run with leviathan7's permissions. 
+		The brute-force script found the correct code to trigger the privilege escalation. 
+		You didn't need to open the file because you used it as a tool to gain access, not a puzzle to be solved.
+		so no need to worry about leviathan6 program here.
+command ==> cat /etc/leviathan_pass/leviathan7
